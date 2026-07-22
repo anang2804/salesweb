@@ -2,6 +2,7 @@ import HeroBanner from "@/components/HeroBanner";
 import ProductSlider from "@/components/ProductSlider";
 import SalesSection from "@/components/SalesSection";
 import TestimonialGallery from "@/components/TestimonialGallery";
+import AllProductsSection from "@/components/AllProductsSection";
 import Link from "next/link";
 
 import { produkList } from "@/data/produkData";
@@ -62,13 +63,15 @@ export default function Home() {
             title="Produk"
             subtitle="Pilihan terbaik dari kami untuk Anda"
           />
-          <ProductSlider products={produkList.slice(0, 4)} id="featured" />
+          <ProductSlider products={produkList} id="featured" />
         </div>
       </section>
 
       <SalesSection />
 
       <TestimonialGallery />
+
+      <AllProductsSection />
     </main>
   );
 }

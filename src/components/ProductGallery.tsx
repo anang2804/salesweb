@@ -27,6 +27,10 @@ export default function ProductGallery({ items, namaProduk }: ProductGalleryProp
             gap: "14px",
             pagination: false,
             arrows: false,
+            autoplay: true,
+            interval: 3500,
+            pauseOnHover: true,
+            resetProgress: false,
             breakpoints: {
               768: { perPage: 2, gap: "12px" },
               480: { perPage: 1, gap: "10px" },

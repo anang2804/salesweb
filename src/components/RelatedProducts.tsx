@@ -16,10 +16,12 @@ interface RelatedProductsProps {
 function formatHarga(amount: number) {
   if (amount >= 1000000000) {
     const miliar = amount / 1000000000;
-    return `${miliar.toLocaleString("id-ID", {
-      minimumFractionDigits: 3,
-      maximumFractionDigits: 3,
-    }).replace(",", ".")}`;
+    return `${miliar
+      .toLocaleString("id-ID", {
+        minimumFractionDigits: 3,
+        maximumFractionDigits: 3,
+      })
+      .replace(",", ".")}`;
   }
   return new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -33,10 +35,7 @@ function RelatedCard({ produk }: { produk: Produk }) {
     <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
       {/* Gambar */}
       <div className="relative w-full bg-white">
-        <div
-          className="relative w-full"
-          style={{ paddingBottom: "66.666%" }}
-        >
+        <div className="relative w-full" style={{ paddingBottom: "66.666%" }}>
           {/* Diagonal red accent + skyline */}
           <div className="absolute inset-0 overflow-hidden rounded-t-xl">
             <div
@@ -108,9 +107,7 @@ export default function RelatedProducts({
   produkList,
   currentSlug,
 }: RelatedProductsProps) {
-  const related = produkList
-    .filter((p) => p.slug !== currentSlug)
-    .slice(0, 4);
+  const related = produkList.filter((p) => p.slug !== currentSlug).slice(0, 4);
 
   if (related.length === 0) return null;
 
@@ -128,6 +125,10 @@ export default function RelatedProducts({
             gap: "20px",
             pagination: false,
             arrows: false,
+            autoplay: true,
+            interval: 3500,
+            pauseOnHover: true,
+            resetProgress: false,
             breakpoints: {
               1024: { perPage: 2, gap: "14px" },
               640: { perPage: 1, gap: "14px" },
