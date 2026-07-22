@@ -11,7 +11,7 @@ export default function AllProductsSection() {
             Katalog Kami
           </h2>
           <p className="mt-2 text-sm text-gray-500 max-w-md mx-auto">
-            Temukan mobil Toyota impian Anda
+            Temukan mobil Suzuki impian Anda
           </p>
         </div>
 
