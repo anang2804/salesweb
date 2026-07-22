@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Phone, MessageCircle, Instagram, Mail } from "lucide-react";
+import { Phone, MessageCircle } from "lucide-react";
 
 import { salesTeam } from "@/data/salesTeam";
 
@@ -14,13 +14,6 @@ export default function SalesSection() {
       href: `tel:${sales.phone}`,
       isExternal: false,
     },
-    {
-      icon: Instagram,
-      label: "Terhubung",
-      value: sales.instagramName,
-      href: sales.instagram,
-      isExternal: true,
-    },
   ] as const;
 
   const rightCards = [
@@ -30,13 +23,6 @@ export default function SalesSection() {
       value: `+${sales.whatsapp}`,
       href: `https://wa.me/${sales.whatsapp}/?text=${encodeURIComponent(sales.whatsappText)}`,
       isExternal: true,
-    },
-    {
-      icon: Mail,
-      label: "Feedback",
-      value: sales.email,
-      href: `mailto:${sales.email}`,
-      isExternal: false,
     },
   ] as const;
 

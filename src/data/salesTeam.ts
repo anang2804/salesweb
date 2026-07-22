@@ -21,7 +21,7 @@ export const salesTeam: SalesPerson[] = [
     photo:
       "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80",
     brochureImage:
-      "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&q=80",
+      "/images/sales/muhammad.png",
     brochureImageAlt: "Promo MUHAMMAD SUZUKI",
     phone: "081252826098",
     whatsapp: "6281252826098",
