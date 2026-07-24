@@ -9,10 +9,10 @@ export interface ProdukVarianHarga {
   harga: number;
 }
 
-export interface ProdukVarianWarna {
-  warna: string;
-  kodeWarna: string;
-  foto: string;
+export interface ColorVariant {
+  colorName: string;
+  colorHex: string;
+  image: string;
 }
 
 export interface Produk {
@@ -25,7 +25,7 @@ export interface Produk {
   isPromo: boolean;
   heroImage: string;
   tagline: string;
-  varianWarna: ProdukVarianWarna[];
+  colorVariants: ColorVariant[];
   jumlahTipe: number;
   deskripsi: string;
   kategori: string;
@@ -44,21 +44,26 @@ export const produkList: Produk[] = [
     isPromo: false,
     heroImage: "https://picsum.photos/seed/alphard-hero/1200/600",
     tagline: "Mewah, Nyaman, dan Efisien dalam Satu Kesatuan",
-    varianWarna: [
+    colorVariants: [
       {
-        warna: "Platinum White Pearl",
-        kodeWarna: "#F5F5F0",
-        foto: "https://picsum.photos/seed/alphard-white/600/400",
+        colorName: "Platinum White Pearl",
+        colorHex: "#F5F5F0",
+        image: "https://picsum.photos/seed/alphard-white/600/400",
       },
       {
-        warna: "Black Mica",
-        kodeWarna: "#1a1a1a",
-        foto: "https://picsum.photos/seed/alphard-black/600/400",
+        colorName: "Attitude Black Mica",
+        colorHex: "#1C1C1C",
+        image: "https://picsum.photos/seed/alphard-black/600/400",
       },
       {
-        warna: "Silver Metallic",
-        kodeWarna: "#C0C0C0",
-        foto: "https://picsum.photos/seed/alphard-silver/600/400",
+        colorName: "Silver Metallic",
+        colorHex: "#C0C0C0",
+        image: "https://picsum.photos/seed/alphard-silver/600/400",
+      },
+      {
+        colorName: "Red Mica Metallic",
+        colorHex: "#8B1A1A",
+        image: "https://picsum.photos/seed/alphard-red/600/400",
       },
     ],
     jumlahTipe: 4,
@@ -95,16 +100,26 @@ export const produkList: Produk[] = [
     isPromo: true,
     heroImage: "https://picsum.photos/seed/camry-hero/1200/600",
     tagline: "Eksekutif Mewah dengan Performa Hybrid Terdepan",
-    varianWarna: [
+    colorVariants: [
       {
-        warna: "Platinum White Pearl",
-        kodeWarna: "#F5F5F0",
-        foto: "https://picsum.photos/seed/camry-white/600/400",
+        colorName: "Platinum White Pearl",
+        colorHex: "#F5F5F0",
+        image: "https://picsum.photos/seed/camry-white/600/400",
       },
       {
-        warna: "Attitude Black Mica",
-        kodeWarna: "#1a1a1a",
-        foto: "https://picsum.photos/seed/camry-black/600/400",
+        colorName: "Attitude Black Mica",
+        colorHex: "#1C1C1C",
+        image: "https://picsum.photos/seed/camry-black/600/400",
+      },
+      {
+        colorName: "Silver Metallic",
+        colorHex: "#C0C0C0",
+        image: "https://picsum.photos/seed/camry-silver/600/400",
+      },
+      {
+        colorName: "Red Mica Metallic",
+        colorHex: "#8B1A1A",
+        image: "https://picsum.photos/seed/camry-red/600/400",
       },
     ],
     jumlahTipe: 3,
@@ -139,16 +154,26 @@ export const produkList: Produk[] = [
     isPromo: false,
     heroImage: "https://picsum.photos/id/111/600/400",
     tagline: "Sporty, Agresif, dan Penuh Gaya",
-    varianWarna: [
+    colorVariants: [
       {
-        warna: "Ignite Red",
-        kodeWarna: "#C8102E",
-        foto: "https://picsum.photos/id/111/600/400",
+        colorName: "Ignite Red",
+        colorHex: "#C8102E",
+        image: "https://picsum.photos/id/111/600/400",
       },
       {
-        warna: "Platinum White Pearl",
-        kodeWarna: "#F5F5F0",
-        foto: "https://picsum.photos/id/111/600/400",
+        colorName: "Platinum White Pearl",
+        colorHex: "#F5F5F0",
+        image: "https://picsum.photos/seed/yaris-white/600/400",
+      },
+      {
+        colorName: "Attitude Black Mica",
+        colorHex: "#1C1C1C",
+        image: "https://picsum.photos/seed/yaris-black/600/400",
+      },
+      {
+        colorName: "Silver Metallic",
+        colorHex: "#C0C0C0",
+        image: "https://picsum.photos/seed/yaris-silver/600/400",
       },
     ],
     jumlahTipe: 4,
@@ -173,11 +198,26 @@ export const produkList: Produk[] = [
     isPromo: true,
     heroImage: "https://picsum.photos/id/183/600/400",
     tagline: "SUV Hybrid Siap Temani Petualangan Anda",
-    varianWarna: [
+    colorVariants: [
       {
-        warna: "Platinum White Pearl",
-        kodeWarna: "#F5F5F0",
-        foto: "https://picsum.photos/id/183/600/400",
+        colorName: "Platinum White Pearl",
+        colorHex: "#F5F5F0",
+        image: "https://picsum.photos/id/183/600/400",
+      },
+      {
+        colorName: "Attitude Black Mica",
+        colorHex: "#1C1C1C",
+        image: "https://picsum.photos/seed/yaris-cross-black/600/400",
+      },
+      {
+        colorName: "Silver Metallic",
+        colorHex: "#C0C0C0",
+        image: "https://picsum.photos/seed/yaris-cross-silver/600/400",
+      },
+      {
+        colorName: "Red Mica Metallic",
+        colorHex: "#8B1A1A",
+        image: "https://picsum.photos/seed/yaris-cross-red/600/400",
       },
     ],
     jumlahTipe: 3,
@@ -201,11 +241,26 @@ export const produkList: Produk[] = [
     isPromo: false,
     heroImage: "https://picsum.photos/id/183/600/400",
     tagline: "Mobil Perkotaan yang Gesit dan Irit",
-    varianWarna: [
+    colorVariants: [
       {
-        warna: "Taffeta White",
-        kodeWarna: "#FFFFFF",
-        foto: "https://picsum.photos/id/183/600/400",
+        colorName: "Taffeta White",
+        colorHex: "#FFFFFF",
+        image: "https://picsum.photos/id/183/600/400",
+      },
+      {
+        colorName: "Attitude Black Mica",
+        colorHex: "#1C1C1C",
+        image: "https://picsum.photos/seed/agya-black/600/400",
+      },
+      {
+        colorName: "Silver Metallic",
+        colorHex: "#C0C0C0",
+        image: "https://picsum.photos/seed/agya-silver/600/400",
+      },
+      {
+        colorName: "Red Mica Metallic",
+        colorHex: "#8B1A1A",
+        image: "https://picsum.photos/seed/agya-red/600/400",
       },
     ],
     jumlahTipe: 3,

@@ -38,7 +38,7 @@ export default function ProdukDetailPage({
   if (!produk) notFound();
 
   const [warnaAktif, setWarnaAktif] = useState(0);
-  const fotoAktif = produk.varianWarna[warnaAktif]?.foto ?? produk.heroImage;
+  const fotoAktif = produk.colorVariants[warnaAktif]?.image ?? produk.heroImage;
 
   return (
     <main className="min-h-screen bg-white">
@@ -102,32 +102,33 @@ export default function ProdukDetailPage({
             <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
               <Image
                 src={fotoAktif}
-                alt={`${produk.nama} - ${produk.varianWarna[warnaAktif]?.warna}`}
+                alt={`${produk.nama} - ${produk.colorVariants[warnaAktif]?.colorName}`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
+                priority
               />
             </div>
 
             {/* Label warna aktif */}
             <p className="mt-3 text-sm font-medium text-gray-700 text-center">
-              {produk.varianWarna[warnaAktif]?.warna}
+              {produk.colorVariants[warnaAktif]?.colorName}
             </p>
 
             {/* Dot indicator warna */}
             <div className="mt-3 flex items-center justify-center gap-3">
-              {produk.varianWarna.map((v, i) => (
+              {produk.colorVariants.map((v, i) => (
                 <button
-                  key={v.kodeWarna}
+                  key={v.colorHex}
                   onClick={() => setWarnaAktif(i)}
-                  aria-label={`Pilih warna ${v.warna}`}
+                  aria-label={`Pilih warna ${v.colorName}`}
                   aria-pressed={warnaAktif === i}
                   className={`h-7 w-7 rounded-full border-2 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
                     warnaAktif === i
                       ? "border-indigo-600 scale-110"
                       : "border-gray-300 hover:border-gray-400"
                   }`}
-                  style={{ backgroundColor: v.kodeWarna }}
+                  style={{ backgroundColor: v.colorHex }}
                 />
               ))}
             </div>
