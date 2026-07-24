@@ -18,7 +18,7 @@ export default function ProductSlider({ products, id }: ProductSliderProps) {
     <Swiper
       key={products.length}
       modules={[Autoplay, A11y]}
-      loop={true}
+      loop={products.length > 1}
       autoplay={{
         delay: 3500,
         disableOnInteraction: false,

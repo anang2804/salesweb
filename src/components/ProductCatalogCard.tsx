@@ -48,10 +48,7 @@ export default function ProductCatalogCard({
           {/* Logo pojok kiri atas */}
           {showBrand && (
             <div className="absolute top-3 left-3 z-20 bg-white/90 rounded-md px-2 py-1 shadow-sm">
-              <span className="text-[10px] font-bold text-gray-800">TOYOTA</span>
-              <span className="text-[10px] font-bold text-red-600 block leading-none" style={{ fontSize: "8px" }}>
-                LET&apos;S GO BEYOND
-              </span>
+              <span className="text-[10px] font-bold text-gray-800">SUZUKI</span>
             </div>
           )}
 
