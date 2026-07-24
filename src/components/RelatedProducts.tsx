@@ -54,12 +54,6 @@ function RelatedCard({ produk }: { produk: Produk }) {
             className="object-contain p-4"
           />
 
-          {/* Logo pojok kiri atas */}
-          <div className="absolute top-3 left-3 bg-white/90 rounded-md px-2 py-1 shadow-sm">
-            <span className="text-[10px] font-bold text-gray-800">AUTO</span>
-            <span className="text-[10px] font-bold text-red-600">DEALER</span>
-          </div>
-
           {/* Label model pojok kanan atas */}
           <div className="absolute top-3 right-3 bg-red-600 rounded-md px-2 py-1">
             <span className="text-[10px] font-semibold text-white whitespace-nowrap">

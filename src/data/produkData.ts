@@ -38,12 +38,12 @@ export const produkList: Produk[] = [
     id: 1,
     slug: "apv",
     nama: "Suzuki APV",
-    hargaMulai: 178400000,
-    hargaJuta: 178,
+    hargaMulai: 253000000,
+    hargaJuta: 253,
     transmisi: "MT",
     isPromo: false,
-    heroImage: "/images/products/APV/silvermetalic.png",
-    tagline: "Partner Bisnis dan Keluarga Terbaik",
+    heroImage: "/images/products/APV/bgapv.png",
+    tagline: "Temukan APV yang paling tepat untuk Anda",
     colorVariants: [
       {
         colorName: "Silver Metallic",
@@ -68,18 +68,29 @@ export const produkList: Produk[] = [
     ],
     jumlahTipe: 3,
     deskripsi:
-      "Suzuki APV menghadirkan ruang kabin yang lapang, kenyamanan berkendara, serta efisiensi bahan bakar yang tinggi. Sangat cocok untuk kebutuhan keluarga besar maupun operasional bisnis Anda.",
+      "Apapun bisa anda lakukan, mulai dari menyenangkan istri berbelanja, memanjakan anak-anak ke tempat rekreasi, berlibur bersama keluarga besar, hingga mengembangkan bisnis dan usaha. Berkendara terasa lebih aman dan nyaman.",
     kategori: "MPV",
     galeriFoto: [
-      { nomor: 1, gambar: "/images/products/APV/silvermetalic.png", deskripsi: "Tampak depan Suzuki APV Silver Metallic" },
-      { nomor: 2, gambar: "/images/products/APV/greymetalic.png", deskripsi: "Tampak depan Suzuki APV Grey Metallic" },
-      { nomor: 3, gambar: "/images/products/APV/hitammetalic.png", deskripsi: "Tampak depan Suzuki APV Hitam Metallic" },
-      { nomor: 4, gambar: "/images/products/APV/burgundyred.png", deskripsi: "Tampak depan Suzuki APV Burgundy Red" },
+      {
+        nomor: 1,
+        gambar: "/images/products/APV/dalam.png",
+        deskripsi: "Tampak dalam Suzuki APV",
+      },
+      {
+        nomor: 2,
+        gambar: "/images/products/APV/body.png",
+        deskripsi: "Tampak body Suzuki APV",
+      },
+      {
+        nomor: 3,
+        gambar: "/images/products/APV/peforma.png",
+        deskripsi: "Tampak performa Suzuki APV",
+      },
     ],
     varianHarga: [
-      { nama: "APV GL MT", harga: 197500000 },
-      { nama: "APV GX MT", harga: 215800000 },
-      { nama: "APV Blind Van MT", harga: 178400000 },
+      { nama: "APV GL", harga: 253500000 },
+      { nama: "APV GX", harga: 267500000 },
+      { nama: "APV SGX", harga: 272500000 },
     ],
   },
 ];

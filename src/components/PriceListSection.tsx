@@ -2,10 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import {
-  Share2,
-  MessageCircle,
-} from "lucide-react";
+import { Share2, MessageCircle } from "lucide-react";
 
 import type { Produk } from "@/data/produkData";
 
@@ -123,10 +120,7 @@ export default function PriceListSection({ produk }: PriceListSectionProps) {
                 sizes="(max-width: 1024px) 100vw, 420px"
                 className="object-cover"
               />
-              <div className="absolute top-3 left-3 bg-white/90 rounded-lg px-3 py-1.5 shadow-sm">
-                <span className="text-xs font-bold text-gray-800">AUTO</span>
-                <span className="text-xs font-bold text-red-600">DEALER</span>
-              </div>
+
               <div className="absolute top-3 right-3 bg-black/60 rounded-lg px-3 py-1.5">
                 <span className="text-xs font-semibold text-white">
                   {produk.nama}
