@@ -77,8 +77,8 @@ export default function TestimonialGallery() {
             >
               {testimonialGallery.map((item) => (
                 <SwiperSlide key={item.id} className="!h-auto">
-                  <div className="h-full rounded-xl overflow-hidden shadow-md bg-white">
-                    <div className="p-5 pb-4">
+                  <div className="h-full rounded-xl overflow-hidden shadow-md bg-white flex flex-col justify-between">
+                    <div className="px-5 pt-2 pb-4">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex gap-0.5 shrink-0">
                           {Array.from({ length: 5 }, (_, i) => (
@@ -109,13 +109,13 @@ export default function TestimonialGallery() {
                         dari {item.city}
                       </p>
                     </div>
-                    <div className="relative w-full aspect-[4/3]">
+                    <div className="relative w-full aspect-[4/3] p-0 m-0 overflow-hidden rounded-b-xl">
                       <Image
                         src={item.handoverPhoto}
                         alt={`Serah terima ${item.name}`}
                         fill
                         sizes="(max-width: 767px) 90vw, (max-width: 1023px) 45vw, 35vw"
-                        className="object-cover"
+                        className="object-cover w-full h-full"
                       />
                     </div>
                   </div>
