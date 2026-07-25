@@ -4,6 +4,7 @@ import { produkList } from "@/data/produkData";
 export default function ProductsPage() {
   return (
     <main className="min-h-screen bg-gray-50">
+      <div className="h-16 bg-[#1a1a2e] w-full" />
       <div className="bg-white border-b border-gray-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
           <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
