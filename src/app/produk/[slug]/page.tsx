@@ -99,7 +99,7 @@ export default function ProdukDetailPage({
           {/* Kolom Kanan: Foto + Pemilih Warna */}
           <div>
             {/* Foto close-up */}
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
               <Image
                 src={fotoAktif}
                 alt={`${produk.nama} - ${produk.colorVariants[warnaAktif]?.colorName}`}

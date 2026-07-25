@@ -86,6 +86,11 @@ export const produkList: Produk[] = [
         gambar: "/images/products/APV/peforma.png",
         deskripsi: "Tampak performa Suzuki APV",
       },
+      {
+        nomor: 4,
+        gambar: "/images/products/APV/airbag.png",
+        deskripsi: "Tampak airbag Suzuki APV",
+      },
     ],
     varianHarga: [
       { nama: "APV GL", harga: 253500000 },
