@@ -25,7 +25,7 @@ export const salesTeam: SalesPerson[] = [
     brochureImageAlt: "Promo MUHAMMAD SUZUKI",
     phone: "081252826098",
     whatsapp: "6281252826098",
-    whatsappText: "Halo Andi, info dari website, mau tanya promo produk.",
+    whatsappText: "Halo Muhammad, info dari website, mau tanya promo produk.",
     instagram: "https://www.instagram.com/",
     instagramName: "Instagram",
     email: "andi@websales.id",
