@@ -251,7 +251,7 @@ export const produkList: Produk[] = [
       {
         colorName: "Warna Standar",
         colorHex: "#D1D5DB",
-        image: "/images/products/xl7/color-standard.png",
+        image: "/images/products/xl7/image.png",
       },
     ],
     jumlahTipe: 10,

@@ -113,13 +113,10 @@ export default function Header({ showContactBar }: HeaderProps) {
                     Jawa Timur, Indonesia
                   </span>
                 </span>
-                <span className="flex items-center gap-1">
-                  <Phone className="h-3.5 w-3.5 text-indigo-400" />
-                  <span>(021) 1234-5678</span>
-                </span>
+
                 <span className="hidden md:flex items-center gap-1">
                   <Phone className="h-3.5 w-3.5 text-indigo-400" />
-                  <span>0812-3456-7890</span>
+                  <span>081252826098</span>
                 </span>
               </div>
               <div className="flex items-center gap-3">
