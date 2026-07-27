@@ -106,38 +106,39 @@ export const produkList: Produk[] = [
     hargaJuta: 279,
     transmisi: "MT/AT",
     isPromo: false,
-    heroImage: "/images/products/ERTIGA/hero.jpg",
+    heroImage: "/images/products/ERTIGA/ertiga.png",
     tagline: "Temukan All New Ertiga yang paling tepat untuk Anda",
     colorVariants: [
       {
-        colorName: "Warna Standar",
-        colorHex: "#D1D5DB",
-        image: "/images/products/ERTIGA/color-standard.jpg",
+        colorName: "MELLOW DEEP RED",
+        colorHex: "#7d0d00",
+        image: "/images/products/ertiga/MELLOW DEEP RED.png",
+      },
+      {
+        colorName: "MARBLE BLACK",
+        colorHex: "#08140c",
+        image: "/images/products/ertiga/MARBLE BLACK.png",
       },
     ],
     jumlahTipe: 2,
-    deskripsi: "All New Ertiga hadir dengan kenyamanan maksimal untuk perjalanan keluarga Anda.",
+    deskripsi:
+      "All New Ertiga hadir dengan kenyamanan maksimal untuk perjalanan keluarga Anda.",
     kategori: "MPV",
     galeriFoto: [
       {
         nomor: 1,
-        gambar: "/images/products/ERTIGA/galeri1.jpg",
+        gambar: "/images/products/ertiga/dalam.png",
         deskripsi: "Tampak dalam All New Ertiga",
       },
       {
         nomor: 2,
-        gambar: "/images/products/ERTIGA/galeri2.jpg",
-        deskripsi: "Tampak body All New Ertiga",
+        gambar: "/images/products/ertiga/mesin.png",
+        deskripsi: "Tampak mesin All New Ertiga",
       },
       {
         nomor: 3,
-        gambar: "/images/products/ERTIGA/galeri3.jpg",
-        deskripsi: "Tampak performa All New Ertiga",
-      },
-      {
-        nomor: 4,
-        gambar: "/images/products/ERTIGA/galeri4.jpg",
-        deskripsi: "Tampak fitur All New Ertiga",
+        gambar: "/images/products/ertiga/esp.png",
+        deskripsi: "Tampak ESP All New Ertiga",
       },
     ],
     varianHarga: [
@@ -147,49 +148,45 @@ export const produkList: Produk[] = [
   },
   {
     id: 3,
-    slug: "spresso",
-    nama: "Suzuki Spresso",
+    slug: "s-presso",
+    nama: "Suzuki S-presso",
     hargaMulai: 190500000,
     hargaJuta: 190.5,
     transmisi: "MT/AGS",
     isPromo: false,
-    heroImage: "/images/products/SPRESSO/hero.jpg",
-    tagline: "Temukan Suzuki Spresso yang paling tepat untuk Anda",
+    heroImage: "/images/products/s-presso/1.png",
+    tagline: "Temukan Suzuki S-presso yang paling tepat untuk Anda",
     colorVariants: [
       {
         colorName: "Warna Standar",
         colorHex: "#D1D5DB",
-        image: "/images/products/SPRESSO/color-standard.jpg",
+        image: "/images/products/s-presso/2.png",
       },
     ],
     jumlahTipe: 2,
-    deskripsi: "Suzuki Spresso hadir dengan gaya compact dan lincah untuk perkotaan.",
+    deskripsi:
+      "Suzuki S-presso hadir dengan gaya compact dan lincah untuk perkotaan.",
     kategori: "Hatchback",
     galeriFoto: [
       {
         nomor: 1,
-        gambar: "/images/products/SPRESSO/galeri1.jpg",
-        deskripsi: "Tampak dalam Suzuki Spresso",
+        gambar: "/images/products/s-presso/3.png",
+        deskripsi: "Tampak dalam Suzuki S-presso",
       },
       {
         nomor: 2,
-        gambar: "/images/products/SPRESSO/galeri2.jpg",
-        deskripsi: "Tampak body Suzuki Spresso",
+        gambar: "/images/products/s-presso/4.png",
+        deskripsi: "Tampak mesin Suzuki S-presso",
       },
       {
         nomor: 3,
-        gambar: "/images/products/SPRESSO/galeri3.jpg",
-        deskripsi: "Tampak performa Suzuki Spresso",
-      },
-      {
-        nomor: 4,
-        gambar: "/images/products/SPRESSO/galeri4.jpg",
-        deskripsi: "Tampak fitur Suzuki Spresso",
+        gambar: "/images/products/s-presso/5.png",
+        deskripsi: "Tampak apar Suzuki S-presso",
       },
     ],
     varianHarga: [
-      { nama: "SPRESSO GL MT", harga: 190500000 },
-      { nama: "SPRESSO AGS", harga: 202000000 },
+      { nama: "S-presso GL MT", harga: 190500000 },
+      { nama: "S-presso AGS", harga: 202000000 },
     ],
   },
   {
@@ -200,38 +197,39 @@ export const produkList: Produk[] = [
     hargaJuta: 274.5,
     transmisi: "MT/AT",
     isPromo: false,
-    heroImage: "/images/products/FRONX/hero.jpg",
+    heroImage: "/images/products/FRONX/1.png",
     tagline: "Temukan Suzuki Fronx yang paling tepat untuk Anda",
     colorVariants: [
       {
         colorName: "Warna Standar",
         colorHex: "#D1D5DB",
-        image: "/images/products/FRONX/color-standard.jpg",
+        image: "/images/products/FRONX/2.png",
       },
     ],
     jumlahTipe: 2,
-    deskripsi: "Suzuki Fronx menawarkan kenyamanan crossover modern yang tangguh dan bergaya.",
+    deskripsi:
+      "Suzuki Fronx menawarkan kenyamanan crossover modern yang tangguh dan bergaya.",
     kategori: "Hatchback",
     galeriFoto: [
       {
         nomor: 1,
-        gambar: "/images/products/FRONX/galeri1.jpg",
+        gambar: "/images/products/FRONX/3.png",
         deskripsi: "Tampak dalam Suzuki Fronx",
       },
       {
         nomor: 2,
-        gambar: "/images/products/FRONX/galeri2.jpg",
-        deskripsi: "Tampak body Suzuki Fronx",
+        gambar: "/images/products/FRONX/4.png",
+        deskripsi: "Tampak sinyal Suzuki Fronx",
       },
       {
         nomor: 3,
-        gambar: "/images/products/FRONX/galeri3.jpg",
-        deskripsi: "Tampak performa Suzuki Fronx",
+        gambar: "/images/products/FRONX/5.png",
+        deskripsi: "Tampak airbag Suzuki Fronx",
       },
       {
         nomor: 4,
-        gambar: "/images/products/FRONX/galeri4.jpg",
-        deskripsi: "Tampak fitur Suzuki Fronx",
+        gambar: "/images/products/FRONX/6.png",
+        deskripsi: "Tampak mesin Suzuki Fronx",
       },
     ],
     varianHarga: [
@@ -247,38 +245,39 @@ export const produkList: Produk[] = [
     hargaJuta: 281.75,
     transmisi: "MT/AT",
     isPromo: false,
-    heroImage: "/images/products/XL7/hero.jpg",
+    heroImage: "/images/products/XL7/xl71.png",
     tagline: "Temukan New Suzuki XL7 yang paling tepat untuk Anda",
     colorVariants: [
       {
         colorName: "Warna Standar",
         colorHex: "#D1D5DB",
-        image: "/images/products/XL7/color-standard.jpg",
+        image: "/images/products/XL7/color-standard.png",
       },
     ],
     jumlahTipe: 10,
-    deskripsi: "New Suzuki XL7 tangguh dan andal untuk petualangan keluarga Anda.",
+    deskripsi:
+      "New Suzuki XL7 tangguh dan andal untuk petualangan keluarga Anda.",
     kategori: "SUV",
     galeriFoto: [
       {
         nomor: 1,
-        gambar: "/images/products/XL7/galeri1.jpg",
+        gambar: "/images/products/XL7/dalam.png",
         deskripsi: "Tampak dalam New Suzuki XL7",
       },
       {
         nomor: 2,
-        gambar: "/images/products/XL7/galeri2.jpg",
-        deskripsi: "Tampak body New Suzuki XL7",
+        gambar: "/images/products/XL7/tanjakan.png",
+        deskripsi: "Tampak tanjakan New Suzuki XL7",
       },
       {
         nomor: 3,
-        gambar: "/images/products/XL7/galeri3.jpg",
-        deskripsi: "Tampak performa New Suzuki XL7",
+        gambar: "/images/products/XL7/ruang.png",
+        deskripsi: "Tampak ruang New Suzuki XL7",
       },
       {
         nomor: 4,
-        gambar: "/images/products/XL7/galeri4.jpg",
-        deskripsi: "Tampak fitur New Suzuki XL7",
+        gambar: "/images/products/XL7/mesin.png",
+        deskripsi: "Tampak mesin New Suzuki XL7",
       },
     ],
     varianHarga: [
@@ -302,38 +301,49 @@ export const produkList: Produk[] = [
     hargaJuta: 194.5,
     transmisi: "MT",
     isPromo: false,
-    heroImage: "/images/products/CARRY-PU/hero.jpg",
+    heroImage: "/images/products/CARRY-PU/1.png",
     tagline: "Temukan New Suzuki Carry PU yang paling tepat untuk Anda",
     colorVariants: [
       {
         colorName: "Warna Standar",
         colorHex: "#D1D5DB",
-        image: "/images/products/CARRY-PU/color-standard.jpg",
+        image: "/images/products/CARRY-PU/2.png",
       },
     ],
     jumlahTipe: 4,
-    deskripsi: "New Suzuki Carry PU adalah partner bisnis terpercaya Anda yang tangguh dan muat banyak.",
+    deskripsi:
+      "New Suzuki Carry PU adalah partner bisnis terpercaya Anda yang tangguh dan muat banyak.",
     kategori: "Commercial",
     galeriFoto: [
       {
         nomor: 1,
-        gambar: "/images/products/CARRY-PU/galeri1.jpg",
+        gambar: "/images/products/CARRY-PU/3.png",
         deskripsi: "Tampak dalam New Suzuki Carry PU",
       },
       {
         nomor: 2,
-        gambar: "/images/products/CARRY-PU/galeri2.jpg",
+        gambar: "/images/products/CARRY-PU/4.png",
         deskripsi: "Tampak body New Suzuki Carry PU",
       },
       {
         nomor: 3,
-        gambar: "/images/products/CARRY-PU/galeri3.jpg",
+        gambar: "/images/products/CARRY-PU/5.png",
         deskripsi: "Tampak performa New Suzuki Carry PU",
       },
       {
         nomor: 4,
-        gambar: "/images/products/CARRY-PU/galeri4.jpg",
+        gambar: "/images/products/CARRY-PU/6.png",
         deskripsi: "Tampak fitur New Suzuki Carry PU",
+      },
+      {
+        nomor: 5,
+        gambar: "/images/products/CARRY-PU/7.png",
+        deskripsi: "Tampak interior New Suzuki Carry PU",
+      },
+      {
+        nomor: 6,
+        gambar: "/images/products/CARRY-PU/8.png",
+        deskripsi: "Tampak mesin New Suzuki Carry PU",
       },
     ],
     varianHarga: [

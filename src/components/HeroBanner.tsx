@@ -67,7 +67,17 @@ export default function HeroBanner() {
 
       <button
         aria-label="Slide sebelumnya"
-        className="hero-btn-prev absolute left-3 top-1/2 z-10 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-800 shadow transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-white md:left-5 md:h-12 md:w-12"
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          swiperRef.current?.slidePrev();
+        }}
+        onTouchEnd={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          swiperRef.current?.slidePrev();
+        }}
+        className="hero-btn-prev absolute left-3 top-1/2 z-30 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/80 text-gray-800 shadow transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-white md:left-5 md:h-12 md:w-12 cursor-pointer"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <polyline points="15 18 9 12 15 6" />
@@ -76,14 +86,24 @@ export default function HeroBanner() {
 
       <button
         aria-label="Slide berikutnya"
-        className="hero-btn-next absolute right-3 top-1/2 z-10 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-800 shadow transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-white md:right-5 md:h-12 md:w-12"
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          swiperRef.current?.slideNext();
+        }}
+        onTouchEnd={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          swiperRef.current?.slideNext();
+        }}
+        className="hero-btn-next absolute right-3 top-1/2 z-30 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/80 text-gray-800 shadow transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-white md:right-5 md:h-12 md:w-12 cursor-pointer"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <polyline points="9 18 15 12 9 6" />
         </svg>
       </button>
 
-      <div className="hero-pagination absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2" role="tablist" aria-label="Pilih slide" />
+      <div className="hero-pagination absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 gap-2" role="tablist" aria-label="Pilih slide" />
 
       <style>{`
         .hero-pagination .swiper-pagination-bullet {

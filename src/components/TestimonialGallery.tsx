@@ -1,16 +1,20 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, A11y, Autoplay } from "swiper/modules";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import type { Swiper as SwiperClass } from "swiper/types";
 
 import "swiper/css";
 
 import { testimonialGallery } from "@/data/testimonialGalleryData";
 
 export default function TestimonialGallery() {
+  const swiperRef = useRef<SwiperClass | null>(null);
+
   return (
     <section id="testimoni" className="w-full bg-[#C8102E]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
@@ -33,18 +37,38 @@ export default function TestimonialGallery() {
               >
                 Lihat Semua
               </Link>
-              <div className="mt-6 flex justify-end gap-3">
+              <div className="mt-6 flex justify-end gap-3 relative z-20">
                 <button
                   type="button"
                   aria-label="Sebelumnya"
-                  className="testimonial-btn-prev flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 text-gray-500 hover:border-red-400 hover:text-red-600 transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    swiperRef.current?.slidePrev();
+                  }}
+                  onTouchEnd={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    swiperRef.current?.slidePrev();
+                  }}
+                  className="testimonial-btn-prev flex h-11 w-11 items-center justify-center rounded-lg border border-gray-300 text-gray-500 hover:border-red-400 hover:text-red-600 transition-colors cursor-pointer"
                 >
                   <ChevronLeft className="h-5 w-5" />
                 </button>
                 <button
                   type="button"
                   aria-label="Berikutnya"
-                  className="testimonial-btn-next flex h-10 w-10 items-center justify-center rounded-lg border border-red-500 text-red-600 hover:bg-red-50 transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    swiperRef.current?.slideNext();
+                  }}
+                  onTouchEnd={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    swiperRef.current?.slideNext();
+                  }}
+                  className="testimonial-btn-next flex h-11 w-11 items-center justify-center rounded-lg border border-red-500 text-red-600 hover:bg-red-50 transition-colors cursor-pointer"
                 >
                   <ChevronRight className="h-5 w-5" />
                 </button>
@@ -56,6 +80,9 @@ export default function TestimonialGallery() {
           <div className="flex-1 min-w-0">
             <Swiper
               modules={[Navigation, A11y, Autoplay]}
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
               navigation={{
                 nextEl: ".testimonial-btn-next",
                 prevEl: ".testimonial-btn-prev",

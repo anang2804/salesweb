@@ -7,12 +7,42 @@ import Image from "next/image";
 import { MapPin, Phone, Clock } from "lucide-react";
 
 const navLinks = [
-  { href: "/products?category=mpv", label: "MPV", hasDot: true, category: "mpv" },
-  { href: "/products?category=suv", label: "SUV", hasDot: true, category: "suv" },
-  { href: "/products?category=hatchback", label: "HATCHBACK", hasDot: true, category: "hatchback" },
-  { href: "/products?category=sedan", label: "SEDAN", hasDot: true, category: "sedan" },
-  { href: "/products?category=commercial", label: "COMMERCIAL", hasDot: true, category: "commercial" },
-  { href: "/#testimoni", label: "TESTIMONI", hasDot: false, category: "testimoni" },
+  {
+    href: "/products?category=mpv",
+    label: "MPV",
+    hasDot: true,
+    category: "mpv",
+  },
+  {
+    href: "/products?category=suv",
+    label: "SUV",
+    hasDot: true,
+    category: "suv",
+  },
+  {
+    href: "/products?category=hatchback",
+    label: "HATCHBACK",
+    hasDot: true,
+    category: "hatchback",
+  },
+  {
+    href: "/products?category=sedan",
+    label: "SEDAN",
+    hasDot: true,
+    category: "sedan",
+  },
+  {
+    href: "/products?category=commercial",
+    label: "COMMERCIAL",
+    hasDot: true,
+    category: "commercial",
+  },
+  {
+    href: "/#testimoni",
+    label: "TESTIMONI",
+    hasDot: false,
+    category: "testimoni",
+  },
 ];
 
 interface HeaderProps {
@@ -23,6 +53,9 @@ export default function Header({ showContactBar }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const [currentCategory, setCurrentCategory] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  console.log("menuOpen state:", menuOpen);
 
   useEffect(() => {
     const handle = requestAnimationFrame(() => {
@@ -42,6 +75,22 @@ export default function Header({ showContactBar }: HeaderProps) {
   }, [pathname]);
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleScroll = () => {
+        const scrolled = window.scrollY > 20;
+        requestAnimationFrame(() => {
+          setIsScrolled(scrolled);
+        });
+      };
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, []);
+
+  useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -57,7 +106,8 @@ export default function Header({ showContactBar }: HeaderProps) {
     (pathname === "/" ||
       pathname === "/products" ||
       pathname.startsWith("/produk/")) &&
-    !menuOpen;
+    !menuOpen &&
+    !isScrolled;
   const isFixed =
     pathname === "/" ||
     pathname === "/products" ||
@@ -65,7 +115,7 @@ export default function Header({ showContactBar }: HeaderProps) {
 
   return (
     <header
-      className={`z-50 w-full transition-all duration-300 ${
+      className={`z-[100] w-full transition-all duration-300 ${
         isFixed ? "fixed top-0 left-0" : "sticky top-0"
       } ${
         isTransparent
@@ -87,7 +137,7 @@ export default function Header({ showContactBar }: HeaderProps) {
                 <span className="flex items-center gap-1">
                   <MapPin className="h-3.5 w-3.5 text-indigo-400" />
                   <span className="hidden sm:inline">
-                    Jl. Sudirman No. 123, Jakarta
+                    Jawa Timur, Indonesia
                   </span>
                 </span>
                 <span className="flex items-center gap-1">
@@ -130,9 +180,14 @@ export default function Header({ showContactBar }: HeaderProps) {
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => {
               const isActive =
-                (link.category && currentCategory === link.category && pathname === "/products") ||
-                (link.href === "/#testimoni" && pathname === "/" && typeof window !== "undefined" && window.location.hash === "#testimoni") ||
-                (pathname === link.href);
+                (link.category &&
+                  currentCategory === link.category &&
+                  pathname === "/products") ||
+                (link.href === "/#testimoni" &&
+                  pathname === "/" &&
+                  typeof window !== "undefined" &&
+                  window.location.hash === "#testimoni") ||
+                pathname === link.href;
               let linkClass = "";
               if (isTransparent) {
                 linkClass = isActive
@@ -221,14 +276,19 @@ export default function Header({ showContactBar }: HeaderProps) {
       {menuOpen && (
         <div
           id="mobile-menu"
-          className="md:hidden border-t border-gray-100 bg-white"
+          className="md:hidden border-t border-gray-100 bg-white absolute top-full left-0 w-full shadow-xl z-[100]"
         >
           <nav className="flex flex-col px-4 py-3 gap-1">
             {navLinks.map((link) => {
               const isActive =
-                (link.category && currentCategory === link.category && pathname === "/products") ||
-                (link.href === "/#testimoni" && pathname === "/" && typeof window !== "undefined" && window.location.hash === "#testimoni") ||
-                (pathname === link.href);
+                (link.category &&
+                  currentCategory === link.category &&
+                  pathname === "/products") ||
+                (link.href === "/#testimoni" &&
+                  pathname === "/" &&
+                  typeof window !== "undefined" &&
+                  window.location.hash === "#testimoni") ||
+                pathname === link.href;
               return (
                 <Link
                   key={link.href}

@@ -26,7 +26,7 @@ export default function ProductNavbar() {
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">
                 <MapPin className="h-3 w-3 text-indigo-400" />
-                <span className="hidden sm:inline">Jl. Sudirman No. 123, Jakarta</span>
+                <span className="hidden sm:inline">Jawa Timur, Indonesia</span>
               </span>
               <span className="flex items-center gap-1">
                 <Phone className="h-3 w-3 text-indigo-400" />
