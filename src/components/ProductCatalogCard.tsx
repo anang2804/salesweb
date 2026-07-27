@@ -16,7 +16,7 @@ export default function ProductCatalogCard({
   return (
     <Link
       href={`/produk/${produk.slug}`}
-      className="group block bg-white rounded-2xl overflow-visible shadow-sm hover:shadow-lg transition-shadow duration-200"
+      className="group block bg-white rounded-2xl overflow-hidden shadow-sm ring-1 ring-gray-100 hover:shadow-md transition-all duration-200"
     >
       {/* Wrapper gambar + badge — posisi relative supaya badge bisa overflow */}
       <div className="relative">
@@ -41,7 +41,7 @@ export default function ProductCatalogCard({
               fill
               priority={priority}
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-contain p-4"
+              className="object-contain p-3 sm:p-4"
             />
           </div>
 
@@ -70,12 +70,12 @@ export default function ProductCatalogCard({
         </div>
 
         {/* Badge harga lingkaran — di luar div overflow-hidden, menumpuk di pojok kanan bawah */}
-        <div className="absolute -bottom-10 right-4 z-20">
-          <div className="flex h-20 w-20 flex-col items-center justify-center rounded-full bg-red-600 shadow-md">
-            <span className="text-xl font-bold text-white leading-none">
+        <div className="absolute -bottom-8 right-3 z-20 sm:-bottom-10 sm:right-4">
+          <div className="flex h-16 w-16 flex-col items-center justify-center rounded-full bg-red-600 shadow-md sm:h-20 sm:w-20">
+            <span className="text-lg font-bold text-white leading-none sm:text-xl">
               {produk.hargaJuta}
             </span>
-            <span className="text-[11px] font-semibold text-white/80 leading-none mt-1">
+            <span className="text-[10px] font-semibold text-white/80 leading-none mt-1 sm:text-[11px]">
               Jt
             </span>
           </div>
@@ -83,7 +83,7 @@ export default function ProductCatalogCard({
       </div>
 
       {/* Info bawah */}
-      <div className="px-4 pt-14 pb-4">
+      <div className="px-3 pt-12 pb-4 sm:px-4 sm:pt-14">
         <p className="text-sm font-bold text-gray-900 leading-snug">
           {produk.nama}
         </p>

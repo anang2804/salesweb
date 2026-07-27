@@ -106,7 +106,7 @@ export const produkList: Produk[] = [
     hargaJuta: 279,
     transmisi: "MT/AT",
     isPromo: false,
-    heroImage: "/images/products/ERTIGA/ertiga.png",
+    heroImage: "/images/products/ertiga/ertiga.png",
     tagline: "Temukan All New Ertiga yang paling tepat untuk Anda",
     colorVariants: [
       {

@@ -11,7 +11,7 @@ export const testimonialGallery: TestimonialGalleryItem[] = [
   {
     id: 1,
     name: "Ibu Carla",
-    city: "Jakarta",
+    city: "Sidoarjo",
     rating: 5,
     avatar: "https://picsum.photos/seed/avatar1/100/100",
     handoverPhoto: "/images/testimonials/p1.png",
@@ -19,7 +19,7 @@ export const testimonialGallery: TestimonialGalleryItem[] = [
   {
     id: 2,
     name: "Bapak Hendra",
-    city: "Bandung",
+    city: "Surabaya",
     rating: 5,
     avatar: "https://picsum.photos/seed/avatar2/100/100",
     handoverPhoto: "/images/testimonials/p2.png",
@@ -27,7 +27,7 @@ export const testimonialGallery: TestimonialGalleryItem[] = [
   {
     id: 3,
     name: "Ibu Dewi",
-    city: "Surabaya",
+    city: "Sidoarjo",
     rating: 5,
     avatar: "https://picsum.photos/seed/avatar3/100/100",
     handoverPhoto: "/images/testimonials/p3.png",
@@ -35,8 +35,8 @@ export const testimonialGallery: TestimonialGalleryItem[] = [
   {
     id: 4,
     name: "Bapak Agus",
-    city: "Yogyakarta",
-    rating: 4,
+    city: "Surabaya",
+    rating: 5,
     avatar: "https://picsum.photos/seed/avatar4/100/100",
     handoverPhoto: "/images/testimonials/p4.png",
   },

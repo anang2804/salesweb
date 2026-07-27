@@ -105,16 +105,16 @@ export default function ProductSlider({ products, id }: ProductSliderProps) {
   }, []);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       <div
         ref={trackRef}
         aria-label={`Slider produk ${id}`}
-        className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory touch-pan-x pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory touch-pan-x pb-2 sm:gap-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {products.map((product) => (
           <div
             key={product.id}
-            className="shrink-0 snap-center basis-[86%] sm:basis-[48%] lg:basis-[23.5%]"
+            className="shrink-0 snap-center basis-[84%] sm:basis-[48%] lg:basis-[23.5%]"
           >
             <ProductCatalogCard produk={product} showBrand={false} />
           </div>
