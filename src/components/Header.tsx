@@ -138,11 +138,11 @@ export default function Header({ showContactBar }: HeaderProps) {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <Image
-              src="/images/logo/logosuzuki1.png"
+              src="/images/logo/logosuzuki1-cropped.png"
               alt="Logo Suzuki"
-              width={180}
-              height={48}
-              className="h-12 w-auto object-contain transition-all duration-300 drop-shadow-md"
+              width={160}
+              height={31}
+              className="h-8 w-auto object-contain transition-all duration-300 drop-shadow-md"
               priority
             />
           </Link>
