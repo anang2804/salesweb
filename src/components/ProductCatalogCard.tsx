@@ -48,7 +48,9 @@ export default function ProductCatalogCard({
           {/* Logo pojok kiri atas */}
           {showBrand && (
             <div className="absolute top-3 left-3 z-20 bg-white/90 rounded-md px-2 py-1 shadow-sm">
-              <span className="text-[10px] font-bold text-gray-800">SUZUKI</span>
+              <span className="text-[10px] font-bold text-gray-800">
+                SUZUKI
+              </span>
             </div>
           )}
 
@@ -61,7 +63,9 @@ export default function ProductCatalogCard({
 
           {/* Badge PROMO pojok kiri atas (di bawah logo) */}
           {produk.isPromo && (
-            <div className={`absolute ${showBrand ? "top-10" : "top-3"} left-3 z-20`}>
+            <div
+              className={`absolute ${showBrand ? "top-10" : "top-3"} left-3 z-20`}
+            >
               <span className="inline-block rounded-full bg-orange-500 px-2.5 py-0.5 text-[10px] font-bold text-white">
                 PROMO
               </span>
