@@ -19,7 +19,7 @@ function GalleryCard({
 }) {
   return (
     <div className="h-full rounded-xl overflow-hidden shadow-md bg-white">
-      <div className="relative p-5 pb-4">
+          pauseOnMouseEnter: false,
         <div className="flex gap-0.5">
           {Array.from({ length: 5 }, (_, i) => (
             <Star

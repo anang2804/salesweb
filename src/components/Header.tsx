@@ -55,15 +55,6 @@ export default function Header({ showContactBar }: HeaderProps) {
   const [currentCategory, setCurrentCategory] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  console.log("menuOpen state:", menuOpen);
-
-  useEffect(() => {
-    const handle = requestAnimationFrame(() => {
-      setMenuOpen(false);
-    });
-    return () => cancelAnimationFrame(handle);
-  }, [pathname]);
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       const handle = requestAnimationFrame(() => {
@@ -90,24 +81,13 @@ export default function Header({ showContactBar }: HeaderProps) {
     }
   }, []);
 
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
-
   const displayContactBar = showContactBar ?? pathname.startsWith("/produk");
   const isTransparent =
     (pathname === "/" ||
       pathname === "/products" ||
       pathname.startsWith("/produk/")) &&
-    !menuOpen &&
-    !isScrolled;
+    !isScrolled &&
+    !menuOpen;
   const isFixed =
     pathname === "/" ||
     pathname === "/products" ||
@@ -115,7 +95,7 @@ export default function Header({ showContactBar }: HeaderProps) {
 
   return (
     <header
-      className={`z-[100] w-full transition-all duration-300 ${
+      className={`relative z-[120] w-full transition-all duration-300 ${
         isFixed ? "fixed top-0 left-0" : "sticky top-0"
       } ${
         isTransparent
@@ -164,8 +144,8 @@ export default function Header({ showContactBar }: HeaderProps) {
         </div>
       )}
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+      <nav className="max-w-340 w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <Image
               src="/images/logo/logosuzuki1.png"
@@ -177,7 +157,112 @@ export default function Header({ showContactBar }: HeaderProps) {
             />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1">
+          <div className="sm:hidden relative">
+            <input
+              id="mobile-menu-toggle"
+              type="checkbox"
+              className="peer sr-only"
+              onChange={(event) => setMenuOpen(event.currentTarget.checked)}
+            />
+
+            <label
+              htmlFor="mobile-menu-toggle"
+              aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+              className={`relative size-9 flex justify-center items-center gap-x-2 rounded-lg border shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 touch-manipulation cursor-pointer ${
+                isTransparent
+                  ? "bg-black/20 border-white/20 text-white hover:bg-white/10"
+                  : "bg-white border-gray-200 text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="peer-checked:hidden"
+              >
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="hidden peer-checked:block"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span className="sr-only">Toggle navigation</span>
+            </label>
+
+            <div
+              id="mobile-menu"
+              className="fixed left-0 right-0 top-[calc(4rem+1px)] z-[130] md:hidden px-4 hidden peer-checked:block"
+            >
+              <div className="rounded-2xl border border-gray-100 bg-white shadow-xl overflow-hidden">
+                <nav className="flex flex-col px-4 py-3 gap-1">
+                  {navLinks.map((link) => {
+                    const isActive =
+                      (link.category &&
+                        currentCategory === link.category &&
+                        pathname === "/products") ||
+                      (link.href === "/#testimoni" &&
+                        pathname === "/" &&
+                        typeof window !== "undefined" &&
+                        window.location.hash === "#testimoni") ||
+                      pathname === link.href;
+
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => {
+                          setMenuOpen(false);
+                          if (link.category) {
+                            setCurrentCategory(link.category);
+                          } else {
+                            setCurrentCategory(null);
+                          }
+                        }}
+                        className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                          isActive
+                            ? "bg-indigo-50 text-indigo-700"
+                            : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                        }`}
+                      >
+                        <span className="relative inline-block">
+                          {link.label}
+                          {link.hasDot && (
+                            <span className="absolute -top-1.5 -right-2 h-1.5 w-1.5 rounded-full bg-red-600" />
+                          )}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden sm:flex items-center gap-1">
             {navLinks.map((link) => {
               const isActive =
                 (link.category &&
@@ -220,104 +305,9 @@ export default function Header({ showContactBar }: HeaderProps) {
                 </Link>
               );
             })}
-          </nav>
-
-          <div className="flex items-center md:hidden">
-            <button
-              aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
-              aria-expanded={menuOpen}
-              aria-controls="mobile-menu"
-              onClick={() => setMenuOpen((v) => !v)}
-              className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
-                isTransparent
-                  ? "text-white hover:bg-white/10"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-            >
-              {menuOpen ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="3" y1="18" x2="21" y2="18" />
-                </svg>
-              )}
-            </button>
           </div>
         </div>
-      </div>
-
-      {menuOpen && (
-        <div
-          id="mobile-menu"
-          className="md:hidden border-t border-gray-100 bg-white absolute top-full left-0 w-full shadow-xl z-[100]"
-        >
-          <nav className="flex flex-col px-4 py-3 gap-1">
-            {navLinks.map((link) => {
-              const isActive =
-                (link.category &&
-                  currentCategory === link.category &&
-                  pathname === "/products") ||
-                (link.href === "/#testimoni" &&
-                  pathname === "/" &&
-                  typeof window !== "undefined" &&
-                  window.location.hash === "#testimoni") ||
-                pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => {
-                    if (link.category) {
-                      setCurrentCategory(link.category);
-                    } else {
-                      setCurrentCategory(null);
-                    }
-                  }}
-                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    isActive
-                      ? "bg-indigo-50 text-indigo-700"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                  }`}
-                >
-                  <span className="relative inline-block">
-                    {link.label}
-                    {link.hasDot && (
-                      <span className="absolute -top-1.5 -right-2 h-1.5 w-1.5 rounded-full bg-red-600" />
-                    )}
-                  </span>
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-      )}
+      </nav>
     </header>
   );
 }

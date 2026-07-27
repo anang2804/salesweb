@@ -90,7 +90,7 @@ export default function TestimonialGallery() {
               autoplay={{
                 delay: 3500,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: true,
+                pauseOnMouseEnter: false,
               }}
               loop={true}
               slidesPerView={1}

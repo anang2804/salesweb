@@ -3,8 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/splide/dist/css/splide.min.css";
 
 import type { Produk } from "@/data/produkData";
 
@@ -112,30 +110,14 @@ export default function RelatedProducts({
           Model Lainnya
         </h2>
 
-        <Splide
-          options={{
-            type: "loop",
-            perPage: 4,
-            gap: "20px",
-            pagination: false,
-            arrows: false,
-            autoplay: true,
-            interval: 3500,
-            pauseOnHover: true,
-            resetProgress: false,
-            breakpoints: {
-              1024: { perPage: 2, gap: "14px" },
-              640: { perPage: 1, gap: "14px" },
-            },
-          }}
+        <div
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4"
           aria-label="Model lainnya"
         >
           {related.map((item) => (
-            <SplideSlide key={item.id}>
-              <RelatedCard produk={item} />
-            </SplideSlide>
+            <RelatedCard key={item.id} produk={item} />
           ))}
-        </Splide>
+        </div>
       </div>
     </section>
   );

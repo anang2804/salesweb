@@ -1,9 +1,6 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, A11y } from "swiper/modules";
-
-import "swiper/css";
+import { useEffect, useRef, useState } from "react";
 
 import type { Produk } from "@/data/produkData";
 import ProductCatalogCard from "./ProductCatalogCard";
@@ -14,32 +11,115 @@ interface ProductSliderProps {
 }
 
 export default function ProductSlider({ products, id }: ProductSliderProps) {
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const activeIndexRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
+  const scrollStopTimerRef = useRef<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (products.length <= 1) return;
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => {
+        const nextIndex = (current + 1) % products.length;
+        const track = trackRef.current;
+        const slide = track?.children[nextIndex] as HTMLElement | undefined;
+
+        if (slide && track) {
+          track.scrollTo({
+            left: slide.offsetLeft,
+            behavior: "smooth",
+          });
+        }
+
+        activeIndexRef.current = nextIndex;
+        return nextIndex;
+      });
+    }, 3500);
+
+    return () => window.clearInterval(timer);
+  }, [products.length]);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const syncFromTrack = () => {
+      const children = Array.from(track.children) as HTMLElement[];
+      if (children.length === 0) return;
+
+      const trackCenter = track.scrollLeft + track.clientWidth / 2;
+      let nextIndex = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      children.forEach((slide, index) => {
+        const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+        const distance = Math.abs(slideCenter - trackCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          nextIndex = index;
+        }
+      });
+
+      if (nextIndex !== activeIndexRef.current) {
+        activeIndexRef.current = nextIndex;
+        setActiveIndex(nextIndex);
+      }
+    };
+
+    const handleScroll = () => {
+      if (rafRef.current !== null) {
+        window.cancelAnimationFrame(rafRef.current);
+      }
+
+      rafRef.current = window.requestAnimationFrame(() => {
+        syncFromTrack();
+
+        if (scrollStopTimerRef.current !== null) {
+          window.clearTimeout(scrollStopTimerRef.current);
+        }
+
+        scrollStopTimerRef.current = window.setTimeout(() => {
+          syncFromTrack();
+        }, 80);
+
+        rafRef.current = null;
+      });
+    };
+
+    track.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      track.removeEventListener("scroll", handleScroll);
+
+      if (rafRef.current !== null) {
+        window.cancelAnimationFrame(rafRef.current);
+      }
+
+      if (scrollStopTimerRef.current !== null) {
+        window.clearTimeout(scrollStopTimerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <Swiper
-      key={products.length}
-      modules={[Autoplay, A11y]}
-      loop={products.length > 1}
-      autoplay={{
-        delay: 3500,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      }}
-      slidesPerView={1.2}
-      spaceBetween={15}
-      allowTouchMove
-      breakpoints={{
-        768:  { slidesPerView: 2.2,   spaceBetween: 15 },
-        1024: { slidesPerView: 4,   spaceBetween: 15 },
-      }}
-      a11y={{ enabled: true }}
-      aria-label={`Slider produk ${id}`}
-      className="w-full !overflow-visible"
-    >
-      {products.map((product) => (
-        <SwiperSlide key={product.id} className="!h-auto !overflow-visible">
-          <ProductCatalogCard produk={product} showBrand={false} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="space-y-4">
+      <div
+        ref={trackRef}
+        aria-label={`Slider produk ${id}`}
+        className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory touch-pan-x pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="shrink-0 snap-center basis-[86%] sm:basis-[48%] lg:basis-[23.5%]"
+          >
+            <ProductCatalogCard produk={product} showBrand={false} />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

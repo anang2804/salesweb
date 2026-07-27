@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MapPin, Phone, Clock, Instagram, ChevronDown } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram } from "lucide-react";
 import { useState } from "react";
 
 const menuKategori = [
@@ -18,7 +18,7 @@ export default function ProductNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white">
+    <header className="relative z-50 w-full bg-white">
       {/* Top bar — contact info */}
       <div className="bg-[#1a1a2e] text-white text-xs">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -100,12 +100,12 @@ export default function ProductNavbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 hover:text-indigo-600 hover:bg-gray-50 transition-colors"
+                className="hidden sm:flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 hover:text-indigo-600 hover:bg-gray-50 transition-colors"
               >
                 <Instagram className="h-5 w-5" />
               </Link>
 
-              <div className="h-9 w-9 rounded-full overflow-hidden border-2 border-indigo-200">
+              <div className="hidden sm:flex h-9 w-9 rounded-full overflow-hidden border-2 border-indigo-200">
                 <div className="h-full w-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-sm">
                   A
                 </div>
@@ -113,10 +113,12 @@ export default function ProductNavbar() {
 
               {/* Mobile menu button */}
               <button
+                type="button"
                 aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
                 aria-expanded={menuOpen}
+                aria-controls="product-mobile-menu"
                 onClick={() => setMenuOpen((v) => !v)}
-                className="lg:hidden flex h-10 w-10 items-center justify-center rounded-lg text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="lg:hidden flex h-10 w-10 items-center justify-center rounded-lg text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 touch-manipulation"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +152,10 @@ export default function ProductNavbar() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="lg:hidden border-t border-gray-100 bg-white">
+          <div
+            id="product-mobile-menu"
+            className="absolute left-0 right-0 top-full z-50 lg:hidden border-t border-gray-100 bg-white shadow-lg"
+          >
             <nav className="flex flex-col px-4 py-3 gap-1">
               {menuKategori.map((item) => (
                 <Link
