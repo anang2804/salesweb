@@ -49,8 +49,8 @@ export default function HeroBanner() {
         className="w-full"
       >
         {heroSlides.map((slide, index) => (
-          <SwiperSlide key={slide.id} lazy={index !== 0}>
-            <div className="relative w-full aspect-[16/9] md:aspect-[21/8] overflow-hidden">
+          <SwiperSlide key={slide.id}>
+            <Link href={slide.ctaLink} className="block relative w-full aspect-video overflow-hidden">
               <Image
                 src={slide.image}
                 alt={slide.alt}
@@ -60,22 +60,7 @@ export default function HeroBanner() {
                 sizes="100vw"
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center md:items-start md:text-left md:px-16 lg:px-24">
-                <h2 className="text-white text-2xl font-bold leading-tight drop-shadow-md sm:text-3xl md:text-4xl lg:text-5xl max-w-2xl">
-                  {slide.headline}
-                </h2>
-                <p className="mt-3 text-white/90 text-sm leading-relaxed drop-shadow sm:text-base md:text-lg max-w-xl">
-                  {slide.subheadline}
-                </p>
-                <Link
-                  href={slide.ctaLink}
-                  className="mt-6 inline-block rounded-full bg-white px-7 py-3 text-sm font-semibold text-gray-900 shadow transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black/50 sm:text-base"
-                >
-                  {slide.ctaText}
-                </Link>
-              </div>
-            </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
