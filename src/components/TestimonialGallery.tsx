@@ -12,7 +12,7 @@ import { testimonialGallery } from "@/data/testimonialGalleryData";
 
 export default function TestimonialGallery() {
   return (
-    <section className="w-full bg-[#C8102E]">
+    <section id="testimoni" className="w-full bg-[#C8102E]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
         <div className="flex flex-col lg:flex-row gap-8 lg:items-start">
           {/* Left Panel */}

@@ -7,10 +7,12 @@ import Image from "next/image";
 import { MapPin, Phone, Clock } from "lucide-react";
 
 const navLinks = [
-  { href: "/", label: "Beranda" },
-  { href: "/products", label: "Produk" },
-  { href: "/about", label: "Tentang Kami" },
-  { href: "/contact", label: "Kontak" },
+  { href: "/products?category=mpv", label: "MPV", hasDot: true, category: "mpv" },
+  { href: "/products?category=suv", label: "SUV", hasDot: true, category: "suv" },
+  { href: "/products?category=hatchback", label: "HATCHBACK", hasDot: true, category: "hatchback" },
+  { href: "/products?category=sedan", label: "SEDAN", hasDot: true, category: "sedan" },
+  { href: "/products?category=commercial", label: "COMMERCIAL", hasDot: true, category: "commercial" },
+  { href: "/#testimoni", label: "TESTIMONI", hasDot: false, category: "testimoni" },
 ];
 
 interface HeaderProps {
@@ -20,9 +22,23 @@ interface HeaderProps {
 export default function Header({ showContactBar }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const [currentCategory, setCurrentCategory] = useState<string | null>(null);
 
   useEffect(() => {
-    setMenuOpen(false);
+    const handle = requestAnimationFrame(() => {
+      setMenuOpen(false);
+    });
+    return () => cancelAnimationFrame(handle);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handle = requestAnimationFrame(() => {
+        const params = new URLSearchParams(window.location.search);
+        setCurrentCategory(params.get("category"));
+      });
+      return () => cancelAnimationFrame(handle);
+    }
   }, [pathname]);
 
   useEffect(() => {
@@ -113,7 +129,10 @@ export default function Header({ showContactBar }: HeaderProps) {
 
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive =
+                (link.category && currentCategory === link.category && pathname === "/products") ||
+                (link.href === "/#testimoni" && pathname === "/" && typeof window !== "undefined" && window.location.hash === "#testimoni") ||
+                (pathname === link.href);
               let linkClass = "";
               if (isTransparent) {
                 linkClass = isActive
@@ -128,9 +147,21 @@ export default function Header({ showContactBar }: HeaderProps) {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={() => {
+                    if (link.category) {
+                      setCurrentCategory(link.category);
+                    } else {
+                      setCurrentCategory(null);
+                    }
+                  }}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}
                 >
-                  {link.label}
+                  <span className="relative inline-block">
+                    {link.label}
+                    {link.hasDot && (
+                      <span className="absolute -top-1.5 -right-2 h-1.5 w-1.5 rounded-full bg-red-600" />
+                    )}
+                  </span>
                 </Link>
               );
             })}
@@ -193,19 +224,37 @@ export default function Header({ showContactBar }: HeaderProps) {
           className="md:hidden border-t border-gray-100 bg-white"
         >
           <nav className="flex flex-col px-4 py-3 gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                  pathname === link.href
-                    ? "bg-indigo-50 text-indigo-700"
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive =
+                (link.category && currentCategory === link.category && pathname === "/products") ||
+                (link.href === "/#testimoni" && pathname === "/" && typeof window !== "undefined" && window.location.hash === "#testimoni") ||
+                (pathname === link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => {
+                    if (link.category) {
+                      setCurrentCategory(link.category);
+                    } else {
+                      setCurrentCategory(null);
+                    }
+                  }}
+                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                    isActive
+                      ? "bg-indigo-50 text-indigo-700"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  }`}
+                >
+                  <span className="relative inline-block">
+                    {link.label}
+                    {link.hasDot && (
+                      <span className="absolute -top-1.5 -right-2 h-1.5 w-1.5 rounded-full bg-red-600" />
+                    )}
+                  </span>
+                </Link>
+              );
+            })}
           </nav>
         </div>
       )}

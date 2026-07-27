@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { use } from "react";
-import { Tag, FileText } from "lucide-react";
+import { Tag } from "lucide-react";
 import { produkList } from "@/data/produkData";
 import ProductGallery from "@/components/ProductGallery";
 import PriceListSection from "@/components/PriceListSection";
@@ -144,15 +143,6 @@ export default function ProdukDetailPage({
 
       {/* Related Products */}
       <RelatedProducts produkList={produkList} currentSlug={slug} />
-
-      {/* Floating Pricelist */}
-      <Link
-        href="/pricelist"
-        className="fixed bottom-6 left-6 z-40 flex items-center gap-2 rounded-full bg-red-600 px-5 py-3 text-sm font-semibold text-white shadow-lg hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-      >
-        <FileText className="h-4 w-4" />
-        Pricelist
-      </Link>
     </main>
   );
 }

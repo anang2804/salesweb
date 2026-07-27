@@ -46,7 +46,10 @@ export default function PriceListSection({ produk }: PriceListSectionProps) {
   const [currentUrl, setCurrentUrl] = useState("");
 
   useEffect(() => {
-    setCurrentUrl(window.location.href);
+    const handle = requestAnimationFrame(() => {
+      setCurrentUrl(window.location.href);
+    });
+    return () => cancelAnimationFrame(handle);
   }, []);
 
   const shareItems = [

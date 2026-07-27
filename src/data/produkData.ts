@@ -211,7 +211,7 @@ export const produkList: Produk[] = [
     ],
     jumlahTipe: 2,
     deskripsi: "Suzuki Fronx menawarkan kenyamanan crossover modern yang tangguh dan bergaya.",
-    kategori: "SUV",
+    kategori: "Hatchback",
     galeriFoto: [
       {
         nomor: 1,
