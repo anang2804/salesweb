@@ -1,11 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = {
-  Belanja: [
+  Produk: [
     { label: "Semua Produk", href: "/products" },
-    { label: "Fashion", href: "/products?category=fashion" },
-    { label: "Elektronik", href: "/products?category=elektronik" },
-    { label: "Rumah & Living", href: "/products?category=rumah-living" },
+    { label: "MPV", href: "/products?category=mpv" },
+    { label: "SUV", href: "/products?category=suv" },
+    { label: "Hatchback", href: "/products?category=hatchback" },
+    { label: "Commercial", href: "/products?category=commercial" },
   ],
   Perusahaan: [
     { label: "Tentang Kami", href: "/about" },
@@ -34,15 +36,6 @@ const socialLinks = [
     ),
   },
   {
-    label: "TikTok",
-    href: "#",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/>
-      </svg>
-    ),
-  },
-  {
     label: "WhatsApp",
     href: "#",
     icon: (
@@ -60,15 +53,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white font-bold text-sm">
-                WS
-              </span>
-              <span className="text-lg font-bold text-white">
-                Web<span className="text-indigo-400">Sales</span>
-              </span>
+              <Image
+                src="/images/logo/logosuzuki1.png"
+                alt="Logo Suzuki"
+                width={150}
+                height={40}
+                style={{ mixBlendMode: "multiply" }}
+                className="h-10 w-auto object-contain transition-all duration-300 drop-shadow-md"
+                priority
+              />
             </Link>
             <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
-              Toko online terpercaya dengan ribuan produk berkualitas. Belanja mudah, aman, dan cepat sampai ke pintu Anda.
+              Dealer resmi Suzuki terpercaya dengan pelayanan terbaik untuk kebutuhan mobil Anda dan keluarga.
             </p>
             <div className="mt-6 flex gap-3">
               {socialLinks.map((s) => (
@@ -106,7 +102,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
-          <p>© {new Date().getFullYear()} WebSales. Semua hak dilindungi.</p>
+          <p>© {new Date().getFullYear()} Suzuki Dealer. Semua hak dilindungi.</p>
           <p>Dibuat dengan ❤️ di Indonesia</p>
         </div>
       </div>
