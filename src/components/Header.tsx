@@ -88,16 +88,9 @@ export default function Header({ showContactBar }: HeaderProps) {
       pathname.startsWith("/produk/")) &&
     !isScrolled &&
     !menuOpen;
-  const isFixed =
-    pathname === "/" ||
-    pathname === "/products" ||
-    pathname.startsWith("/produk/");
-
   return (
     <header
-      className={`relative z-[120] w-full transition-all duration-300 ${
-        isFixed ? "fixed top-0 left-0" : "sticky top-0"
-      } ${
+      className={`sticky top-0 left-0 z-[120] w-full transition-all duration-300 ${
         isTransparent
           ? "bg-transparent bg-gradient-to-b from-black/30 to-transparent shadow-none"
           : "bg-white shadow-sm"

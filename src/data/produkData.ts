@@ -245,13 +245,13 @@ export const produkList: Produk[] = [
     hargaJuta: 281.75,
     transmisi: "MT/AT",
     isPromo: false,
-    heroImage: "/images/products/XL7/xl71.png",
+    heroImage: "/images/products/xl7/xl71.png",
     tagline: "Temukan New Suzuki XL7 yang paling tepat untuk Anda",
     colorVariants: [
       {
         colorName: "Warna Standar",
         colorHex: "#D1D5DB",
-        image: "/images/products/XL7/color-standard.png",
+        image: "/images/products/xl7/color-standard.png",
       },
     ],
     jumlahTipe: 10,
@@ -261,22 +261,22 @@ export const produkList: Produk[] = [
     galeriFoto: [
       {
         nomor: 1,
-        gambar: "/images/products/XL7/dalam.png",
+        gambar: "/images/products/xl7/dalam.png",
         deskripsi: "Tampak dalam New Suzuki XL7",
       },
       {
         nomor: 2,
-        gambar: "/images/products/XL7/tanjakan.png",
+        gambar: "/images/products/xl7/tanjakan.png",
         deskripsi: "Tampak tanjakan New Suzuki XL7",
       },
       {
         nomor: 3,
-        gambar: "/images/products/XL7/ruang.png",
+        gambar: "/images/products/xl7/ruang.png",
         deskripsi: "Tampak ruang New Suzuki XL7",
       },
       {
         nomor: 4,
-        gambar: "/images/products/XL7/mesin.png",
+        gambar: "/images/products/xl7/mesin.png",
         deskripsi: "Tampak mesin New Suzuki XL7",
       },
     ],
