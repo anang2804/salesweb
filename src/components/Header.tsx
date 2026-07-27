@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { MapPin, Phone, Clock } from "lucide-react";
 
 const navLinks = [
@@ -36,8 +37,15 @@ export default function Header({ showContactBar }: HeaderProps) {
   }, [menuOpen]);
 
   const displayContactBar = showContactBar ?? pathname.startsWith("/produk");
-  const isTransparent = (pathname === "/" || pathname === "/products" || pathname.startsWith("/produk/")) && !menuOpen;
-  const isFixed = pathname === "/" || pathname === "/products" || pathname.startsWith("/produk/");
+  const isTransparent =
+    (pathname === "/" ||
+      pathname === "/products" ||
+      pathname.startsWith("/produk/")) &&
+    !menuOpen;
+  const isFixed =
+    pathname === "/" ||
+    pathname === "/products" ||
+    pathname.startsWith("/produk/");
 
   return (
     <header
@@ -50,17 +58,21 @@ export default function Header({ showContactBar }: HeaderProps) {
       }`}
     >
       {displayContactBar && (
-        <div className={`text-xs transition-all duration-300 ${
-          isTransparent 
-            ? "bg-black/20 text-white/90 border-b border-white/10" 
-            : "bg-[#1a1a2e] text-white"
-        }`}>
+        <div
+          className={`text-xs transition-all duration-300 ${
+            isTransparent
+              ? "bg-black/20 text-white/90 border-b border-white/10"
+              : "bg-[#1a1a2e] text-white"
+          }`}
+        >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-9">
               <div className="flex items-center gap-4">
                 <span className="flex items-center gap-1">
                   <MapPin className="h-3.5 w-3.5 text-indigo-400" />
-                  <span className="hidden sm:inline">Jl. Sudirman No. 123, Jakarta</span>
+                  <span className="hidden sm:inline">
+                    Jl. Sudirman No. 123, Jakarta
+                  </span>
                 </span>
                 <span className="flex items-center gap-1">
                   <Phone className="h-3.5 w-3.5 text-indigo-400" />
@@ -89,12 +101,14 @@ export default function Header({ showContactBar }: HeaderProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 shrink-0">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white font-bold text-sm">
-              WS
-            </span>
-            <span className={`text-lg font-bold transition-colors duration-300 ${isTransparent ? "text-white" : "text-gray-900"}`}>
-              Web<span className={isTransparent ? "text-white" : "text-indigo-600"}>Sales</span>
-            </span>
+            <Image
+              src="/images/logo/logosuzuki1.png"
+              alt="Logo Suzuki"
+              width={180}
+              height={48}
+              className="h-12 w-auto object-contain transition-all duration-300 drop-shadow-md"
+              priority
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">
@@ -122,32 +136,47 @@ export default function Header({ showContactBar }: HeaderProps) {
             })}
           </nav>
 
-          <div className="flex items-center gap-2">
-            <Link
-              href="/products"
-              className="hidden md:inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            >
-              Belanja Sekarang
-            </Link>
-
+          <div className="flex items-center md:hidden">
             <button
               aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
               onClick={() => setMenuOpen((v) => !v)}
-              className={`md:hidden flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
+              className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
                 isTransparent
                   ? "text-white hover:bg-white/10"
                   : "text-gray-600 hover:bg-gray-100"
               }`}
             >
               {menuOpen ? (
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
                   <line x1="18" y1="6" x2="6" y2="18" />
                   <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
                   <line x1="3" y1="6" x2="21" y2="6" />
                   <line x1="3" y1="12" x2="21" y2="12" />
                   <line x1="3" y1="18" x2="21" y2="18" />
@@ -177,12 +206,6 @@ export default function Header({ showContactBar }: HeaderProps) {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/products"
-              className="mt-2 flex items-center justify-center rounded-full bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700"
-            >
-              Belanja Sekarang
-            </Link>
           </nav>
         </div>
       )}
